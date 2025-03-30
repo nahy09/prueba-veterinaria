@@ -25,6 +25,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 999;
 }
 
 .header .logo {
@@ -50,10 +51,28 @@ body {
 
 /* Banner */
 .banner {
-    background: url('https://via.placeholder.com/1920x400') no-repeat center/cover;
+    position: relative; /* Permite posicionar elementos dentro del banner */
+    background: url(../img/banner.png) no-repeat center/cover; /* Cambia esta URL por tu imagen */
     color: white;
     text-align: center;
     padding: 6rem 0;
+    overflow: hidden; /* Evita que el overlay se desborde */
+}
+
+/* Capa semitransparente */
+.overlay {
+    position: absolute; /* Posiciona la capa dentro del banner */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cubre todo el ancho del banner */
+    height: 100%; /* Cubre todo el alto del banner */
+    background-color: rgba(0, 0, 0, 0.5); /* Negro con 50% de transparencia */
+    z-index: 1; /* Coloca la capa detrás del contenido del banner */
+}
+
+.banner .container {
+    position: relative; /* Asegura que el contenido esté sobre la capa */
+    z-index: 2; /* Coloca el texto y botón sobre la capa */
 }
 
 .banner h2 {
